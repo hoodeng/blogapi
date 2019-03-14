@@ -1,0 +1,58 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.3.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+
+apply from: "lib.gradle"
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group = 'com.vip'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+
+repositories {
+    mavenCentral()
+}
+
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.vip.demo.DemoApplication'
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compile libs.springboot_undertow
+    compile libs.springboot_actuator
+    compile libs.springboot_hateoas
+    compile libs.springboot_devtools
+    compile libs.springboot_freemarker
+
+    compile libs.springboot_cache
+    compile libs.springboot_aop
+    compile libs.springboot_jdbc
+
+    compile libs.mybatis
+    compile libs.mybatis_spring
+    compile libs.mysql
+    compile libs.druid
+
+
+    compile libs.httpclient
+    compile libs.jackson_databind
+    compile libs.logback
+    compile libs.common_lang3
+    compile libs.common_collections4
+    compile libs.guava
+    compile libs.shiro_core
+    compile libs.common_fileupload
+    compile libs.common_codec
+    compile libs.validator
+}
